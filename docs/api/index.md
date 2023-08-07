@@ -28,14 +28,14 @@ Terraform Provider.
 
 #### Other ways to interact with the API
 
-- **[Agent API CLI](/secure-tunnels/ngrok-agent/reference/ngrok#ngrok-api)**: Explore and script the API via the `ngrok api` commands included in the ngrok agent.
+- **[Agent API CLI](/agent/cli#ngrok-api)**: Explore and script the API via the `ngrok api` commands included in the ngrok agent.
 - **[API Client Libraries](#client-libraries)**: We publish idiomatic API client libraries for all major programming languages
 - **[Terraform Provider](#terraform-provider)**: Use ngrok's Terraform provider to manage ngrok resources
 
 #### You may be looking for other programmatic ways to work with ngrok
 
-- **[Agent API](/secure-tunnels/ngrok-agent/reference/api)**: The ngrok agent has its own API if you're trying to dynamically start and stop endpoints and tunnels
-- **[Agent SDKs](/secure-tunnels/agentless/#ngrok-agent-libraries)**: If you're looking to embed ngrok agent functionality as a library in your own software
+- **[Agent API](/agent/api)**: The ngrok agent has its own API if you're trying to dynamically start and stop endpoints and tunnels
+- **[Agent SDKs](/agent-sdks/)**: If you're looking to embed ngrok agent functionality as a library in your own software
 
 ## Quickstart {#quickstart}
 
@@ -167,7 +167,7 @@ because SCIM requests to the ngrok API are subject to these IP restrictions as
 well.
 
 IP Restrictions can be configured manually on the ngrok dashboard or
-programatically via API with a `type` of `agent`.
+programmatically via API with a `type` of `agent`.
 
 - **[IP Restrictions on your ngrok dashboard](https://dashboard.ngrok.com/security/ip-restrictions)**
 - **[IP Restrictions API Resource](/api/resources/ip-restrictions/)**
@@ -199,9 +199,9 @@ different error conditions.
 Consult the **[Error Reference Documentation](/docs/errors)** for the complete list of all
 error codes returned by ngrok.
 
-## Licensing
+## Pricing
 
 The API is available to all ngrok users at no additional charge. You only incur
-costs if the resources provisioned by the API have a cost.
+costs if the resources provisioned by the API incur a cost.
 
 [API IP Restrictions](#ip-restrictions) is available on the Enterprise plan.

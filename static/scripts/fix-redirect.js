@@ -30,8 +30,5 @@ if (path.includes("/docs/cloud-edge/http-header-templates/")) goto(`/docs/cloud-
 if (path.includes("/docs/integrations/awscloudwatch")) goto(`/docs/integrations/amazon-cloudwatch/`)
 if (path.includes("/docs/integrations/awsfirehose")) goto(`/docs/integrations/amazon-firehose/`)
 if (path.includes("/docs/integrations/awskinesis")) goto(`/docs/integrations/amazon-kinesis/`)
-
-const match = path.match(/\/docs\/ngrok-agent(\/[\w]*)/);
-if (!!match) {
-	goto(`/docs/secure-tunnels/ngrok-agent/reference${match[1]}${window.location.hash}`)
-}
+if (path.includes("/docs/secure-tunnels/tunnels/tcp-tunnels/")) goto(`/docs/tcp/`)
+if (path.includes("/docs/secure-tunnels/tunnels/ssh-reverse-tunnel-agent/")) goto(`/docs/agent/ssh-reverse-tunnel-agent`)

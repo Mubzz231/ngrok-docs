@@ -1,0 +1,110 @@
+# Global Server Load Balancing
+
+---
+
+## Overview
+
+## Endpoints
+
+### Connection Acceleration
+
+### Module Acceleration
+
+### Geo-Aware Acceleration
+
+### Losing a Point of Presence
+
+### Losing an Upstream
+
+## Agents
+
+### Acceleration
+
+### Losing a Point of Presence
+
+## Disabling GSLB
+
+Unless you are using a pre-configured TCP address, you should never explicitly
+select the ngrok region. You should prefer to allow the ngrok agent to use its
+default behavior to automatically connect to the closest point of presence.
+
+If you wish to configure the agent to use a specific point of presence you may do so:
+
+<Tabs groupId="connectivity" queryString="cty">
+<TabItem value="agent-cli" label="Agent CLI" default>
+
+```bash
+ngrok http 80 --region eu
+```
+
+</TabItem>
+<TabItem value="agent-config" label="Agent Config File">
+
+```yaml
+region: eu
+```
+
+</TabItem>
+</Tabs>
+
+## Legacy Behavior
+
+Beginning with the [ngrok v3
+agent](/agent/changelog#ngrok-agent-300---2022-03-28), the agent connects to
+the lowest-latency point point of presence. Prior to that, v2 ngrok agents
+would connect to the US region by default.
+
+### Single Region Limitation
+
+The ngrok agent only connects to a single region. If you wish to simultaneously
+connect to multiple regions, you must run multiple ngrok agents and [explicitly
+select different regions](#explicit-region-selection) for each.
+
+## Overview
+
+Global Server Load Balancing (GSLB) distributes traffic to the
+geographically-nearest point of presence from the perspective of the connecting
+client. GSLB improves the performance and resiliency of your applications.
+
+ngrok's architecture provides every application you deliver via ngrok with
+automatic, zero-configuration GSLB. Furthermore, because ngrok runs [global
+points of presence](/network-edge/#points-of-presence), your application automatically gets some
+of the advantage of GSLB even when running with a single origin service.
+
+They are used to achieve:
+Enhanced performance: Traffic is routed to the Point of Presence (PoP) with the lowest latency.
+Improved resilience and high availability: If an instance in a PoP goes down or an entire PoP is unavailable, a GSLB re-routes traffic to another instance or PoP.
+
+ngrok’s GSLB routes client traffic automatically to the nearest PoP by latency
+without requiring the user to choose a domain (which includes a region). In
+addition, GSLB handles geo-failover both at the ngrok edge as well as at the
+customer’s network where agents are deployed. It enhances resiliency by
+steering traffic from a slow or failing PoP to one that is operational without
+any downtime.
+
+## Endpoints
+
+### Module Acceleration
+
+### TCP Addresses
+
+Unlike domains, TCP addresses are allocated for a specific region. When you
+create a TCP address, you must select the region where it will accept traffic.
+Unlike our globally routed domains, traffic to TCP addresses enters ngrok's
+network from that region.
+
+Moreover, when you use a TCP address, you must [explicitly select the region of the ngrok
+agent](#explicit-region-selection). This is a temporary limitation that we are
+working to remove.
+
+## Agents
+
+There is nothing to configure to use ngrok's global network. The ngrok agent
+automatically connect to the lowest-latency point of presence which is
+typically the geographically closest region.
+
+Inbound traffic to your application is similarly routed to the lowest-latency
+(geographically nearest) point of presence in ngrok's global network without
+any configuration. ngrok accelerates your application's traffic by terminating
+TLS and pushing middleware execution to the point of presence closest to the
+requesting clients.
