@@ -8,14 +8,17 @@
     "docusaurus": "docusaurus",
     "fmt": "prettier --write --cache .",
     "fmt:check": "prettier --check .",
-    "start": "docusaurus start",
+    "start": "concurrently --raw \"npm run remark:watch\" \"docusaurus start\"",
     "build": "NODE_OPTIONS=--max-old-space-size=5120 docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "remark": "remark",
+    "remark:once": "npm run remark -- --quiet --frail --use remark-validate-links docs/",
+    "remark:watch": "npm run remark -- --quiet --frail --use remark-validate-links --watch docs/"
   },
   "dependencies": {
     "@docusaurus/core": "^2.4.0",
@@ -40,6 +43,9 @@
     "@docusaurus/module-type-aliases": "^2.4.0",
     "@docusaurus/plugin-content-docs": "^2.4.1",
     "@docusaurus/types": "2.4.0",
+    "concurrently": "^8.2.0",
+    "remark-cli": "^11.0.0",
+    "remark-validate-links": "^12.1.1",
     "prettier": "3.0.1"
   },
   "browserslist": {
