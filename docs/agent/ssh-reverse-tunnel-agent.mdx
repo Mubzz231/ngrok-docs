@@ -35,7 +35,7 @@ You should only ngrok via SSH if you really can't use an Agent or Agent SDK.
 The SSH reverse tunnel agent has [many functional limitations compared to the
 ngrok agent](#differences).
 
-## Authentication {#uploading-a-public-key}
+## Authentication {#authentication}
 
 Instead of an ngrok authtoken, when you use ngrok via the SSH reverse tunnel
 agent, it uses a public key for authentication. You'll first need to upload
@@ -149,7 +149,7 @@ latest version is `v2`.
 ## Differences from the Agent {#differences}
 
 When you use ngrok via SSH reverse tunnel, you will need to [upload an SSH
-public key](#uploading-a-public-key) to authenticate with instead of using an
+public key](#authentication) to authenticate with instead of using an
 ngrok authtoken like the agent.
 
 Additionally, you'll find that using ngrok via SSH has many functional
