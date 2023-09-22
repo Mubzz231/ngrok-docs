@@ -32,3 +32,4 @@ if (path.includes("/docs/integrations/awsfirehose")) goto(`/docs/integrations/am
 if (path.includes("/docs/integrations/awskinesis")) goto(`/docs/integrations/amazon-kinesis/`)
 if (path.includes("/docs/secure-tunnels/tunnels/tcp-tunnels/")) goto(`/docs/tcp/`)
 if (path.includes("/docs/secure-tunnels/tunnels/ssh-reverse-tunnel-agent/")) goto(`/docs/agent/ssh-reverse-tunnel-agent`)
+if (path.includes("/docs/secure-tunnels/ngrok-agent/reference/config/")) goto(`/docs/agent/config/`)

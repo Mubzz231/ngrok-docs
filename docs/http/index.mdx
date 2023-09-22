@@ -164,7 +164,7 @@ Create an HTTPS endpoint on `example.ngrok.app`
 
 <br />
 
-### Bring your own domain
+### Bring your own domain {#bring-your-own-domain}
 
 Create an HTTPS endpoint on `app.example.com`.
 
@@ -342,7 +342,7 @@ Forward traffic to a HTTP server running on your network at `192.168.1.2:80`.
 
 Create an endpoint on the wildcard domain, `*.example.com`. It will receive
 traffic for `foo.example.com` and `bar.example.com`. [Read more about using
-wildcard domains](/network-edge/#wildcard-domains).
+wildcard domains](/network-edge/domains-and-tcp-addresses/#wildcard-domains).
 
 <Tabs groupId="connectivity" queryString="cty">
 	<TabItem value="agent-cli" label="Agent CLI" default>
@@ -449,7 +449,7 @@ just like `python3 -m http.server` but built directly into the ngrok agent.
 
 ### Serve HTTP and HTTPS
 
-[By default, ngrok create an HTTPS endpoint but not an HTTP
+By default, [ngrok creates an HTTPS endpoint but not an HTTP
 one](#http-vs-https). You can configure this behavior to create an HTTP
 endpoint as well.
 
@@ -511,9 +511,10 @@ There are many other forms of auth for more advanced use cases as well:
 
 ### Domains
 
-[Read the Domains documentation](/network-edge/#domains) for additional details
-about how ngrok chooses domains, what managed based domains ngrok operates, how
-to set up branded domains, how wildcard domains work and more.
+[The Domains documentation](/network-edge/domains-and-tcp-addresses/#domains)
+contains details about how ngrok chooses domains, what managed based domains
+ngrok operates, how to set up branded domains, how wildcard domains work and
+more.
 
 #### Static Domains
 
@@ -530,8 +531,8 @@ agent or an equivalent option with other connectivity choices.
 
 If you want to bring your own domain, you can do that as well, but you'll need
 to [create a Domain record and set up a DNS CNAME
-record](/docs/network-edge/#branded-domains). Once you've set one up, you can
-use the following example.
+record](/docs/network-edge/domains-and-tcp-addresses/#branded-domains). Once
+you've set one up, you can use the following example.
 
 **Example**: [Bring your own Domain](#bring-your-own-domain)
 
