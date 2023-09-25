@@ -39,7 +39,7 @@ page](https://ngrok.com/download) to install and set up the ngrok agent.
 
 ## Example Usage
 
-### Random HTTP Endpoint
+### HTTP Endpoint
 
 Serve your web app listening at port 8080 on a random public URL
 
@@ -90,9 +90,20 @@ Start multiple tunnels defined in the [configuration file](/agent/config/).
 ngrok start foo bar baz
 ```
 
-## Authentication
+## Tab Completion {#tab-completion}
 
-### Authtokens
+The ngrok agent has built-in tab completion which makes it easy to navigate its
+command and flags by hitting tab in your terminal when using a `bash` or `zsh`
+shell. Add tab-completion to your shell session with:
+
+```bash
+. <(ngrok completion>
+```
+
+Install it permanently by following the documentation for the [`ngrok completion`
+command](/agent/cli/#ngrok-completion).
+
+## Authtokens
 
 The ngrok agent authenticates with an authtoken. [Your authtoken is available
 on the ngrok
@@ -116,7 +127,7 @@ if an authtoken is compromised. It also allows you to configure
 When you provision a new authtoken, the full token is only once. As a security
 feature, ngrok does not store a recoverable representation of the token.
 
-### Authtoken ACLs
+## Authtoken ACLs
 
 Authtoken ACLs restrict what actions an ngrok agent connecting with that
 authtoken is allowed to take. You may define multiple ACLs. Authtokens with no
@@ -130,7 +141,7 @@ ACLs may take all actions. The following ACLs are supported:
 | `bind:app=*`         | The agent may create labeled tunnels with labels like `app=x` or `app=y` |
 | `bind:*`             | The agent may listen on all endpoints                                    |
 
-### API Keys
+## API Keys
 
 The ngrok agent contains a [complete CLI for the ngrok
 API](/agent/cli.mdx#ngrok-api).
@@ -220,32 +231,6 @@ manage the installed service:
 - `ngrok service restart`
 - `ngrok service uninstall`
 
-## Tab Completion {#tab-completion}
-
-The ngrok agent has built-in tab completion which makes it easy to navigate its
-command and flags by hitting tab in your terminal when using a `bash` or `zsh`
-shell. Add tab-completion to your shell session with:
-
-```bash
-. <(ngrok completion>
-```
-
-Install it permanently by following the documentation for the [`ngrok completion`
-command](/agent/cli/#ngrok-completion).
-
-## API
-
-The ngrok agent has its own HTTP API that can be used to dynamically inspect,
-start and stop tunnels on the agent while it is running. Consult the
-[ngrok agent API reference documentation](/agent/api/) for more details.
-
-:::tip
-
-If you want to programmatically control the ngrok agent, the [Agent
-SDKs](/agent-sdks/) are usually a more flexible and powerful choice.
-
-:::
-
 ## Remote Management
 
 The ngrok agent can be stopped, restarted, or upgraded remotely using the
@@ -320,7 +305,9 @@ parameter](/agent/config/#update_channel).
 ## Connection Address
 
 By default, the ngrok agent dials the following "agent ingress address" when it
-connects to the ngrok service.
+connects to the ngrok service. This address resolves to a [dyanmic set of IP
+Addresses](/network-edge/#ip-addresses).
+
 
 ```
 connect.ngrok-agent.com:443
@@ -356,6 +343,28 @@ details.
 
     Successfully established ngrok connection! (region: 'us', latency: 112.461875ms)
 ```
+
+## IP Restrictions
+
+All agents must use an authtoken to authenticate with ngrok, but you may also
+further restrict with IP Policies that specify which IPs and CIDRs agents may
+connect to your ngrok account from.
+
+- **[IP Restrictions on your ngrok dashboard](https://dashboard.ngrok.com/security/ip-restrictions)**
+- **[IP Restrictions API Resource](/api/resources/ip-restrictions/)**
+
+## API
+
+The ngrok agent has its own HTTP API that can be used to dynamically inspect,
+start and stop tunnels on the agent while it is running. Consult the
+[ngrok agent API reference documentation](/agent/api/) for more details.
+
+:::tip
+
+If you want to programmatically control the ngrok agent, the [Agent
+SDKs](/agent-sdks/) are usually a more flexible and powerful choice.
+
+:::
 
 ## Using ngrok without the agent
 

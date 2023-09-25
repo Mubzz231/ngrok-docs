@@ -254,7 +254,12 @@ const sidebars = {
 			link: { type: "doc", id: "obs/index" },
 			items: ["obs/index", "obs/reference"],
 		},
-		"iam/index",
+		{
+			label: "IAM",
+			type: "category",
+			link: { type: "doc", id: "iam/index" },
+			items: ["iam/index", "iam/bot-users", "iam/sso", "iam/rbac", "iam/domain-controls"],
+		},
 		{
 			label: "Errors",
 			type: "category",

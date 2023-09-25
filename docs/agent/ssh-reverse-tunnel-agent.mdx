@@ -29,37 +29,9 @@ to an SSH server via ngrok. If you want to use ngrok to create access to your
 own SSH server for remote access, please refer to the [using ngrok with
 ssh](/using-ngrok-with/ssh) documentation.
 
-## When should I use it?
-
 You should only ngrok via SSH if you really can't use an Agent or Agent SDK.
 The SSH reverse tunnel agent has [many functional limitations compared to the
 ngrok agent](#differences).
-
-## Authentication {#authentication}
-
-Instead of an ngrok authtoken, when you use ngrok via the SSH reverse tunnel
-agent, it uses a public key for authentication. You'll first need to upload
-yours to the [SSH Public Keys page on your ngrok
-dashboard](https://dashboard.ngrok.com/tunnels/ssh-keys).
-
-Copy your default SSH public key with:
-
-<Tabs groupId="os" queryString="os">
-<TabItem value="macos" label="Mac OS" default>
-
-```bash
-cat ~/.ssh/id_rsa.pub | pbcopy
-```
-
-</TabItem>
-<TabItem value="linux" label="Linux">
-
-```bash
-cat ~/.ssh/id_rsa.pub
-```
-
-</TabItem>
-</Tabs>
 
 ## Example Usage
 
@@ -104,6 +76,32 @@ a region.
 ```bash
 ssh -R 443:localhost:80 v2@connect.eu.ngrok-agent.com http
 ```
+
+## Authentication {#authentication}
+
+Instead of an ngrok authtoken, when you use ngrok via the SSH reverse tunnel
+agent, it uses a public key for authentication. You'll first need to upload
+yours to the [SSH Public Keys page on your ngrok
+dashboard](https://dashboard.ngrok.com/tunnels/ssh-keys).
+
+Copy your default SSH public key with:
+
+<Tabs groupId="os" queryString="os">
+<TabItem value="macos" label="Mac OS" default>
+
+```bash
+cat ~/.ssh/id_rsa.pub | pbcopy
+```
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+</TabItem>
+</Tabs>
 
 ## Command Syntax
 
